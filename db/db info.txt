@@ -1,0 +1,22 @@
+database Info
+
+reports.virtualsolutionsgh.net
+wp_3p9lg
+
+lrcghana.virtualsolutionsgh.net
+wp_0ur9k
+
+
+<span class="text-danger">@error('txt_set_password') {{ $message }} @enderror</span>
+
+<span class="text-danger">@error('txt_set_confirm_password') {{ $message }} @enderror</span>
+
+$request->validate([
+            'txt_set_password' => 'required|min:5',
+            'txt_set_confirm_password' => 'required|min:5'
+            ], [
+            'txt_set_password.required' => 'Password is required',
+            'txt_set_password.min' => 'Password must have a minimun of five characters',
+            'txt_set_confirm_password.required' => 'Confirm Password field is required',
+            'txt_set_confirm_password.min' => 'Confirm Password field must have a minimun of five characters'
+        ]);

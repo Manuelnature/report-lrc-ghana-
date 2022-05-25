@@ -1,0 +1,422 @@
+ YOutube video
+
+ in blade
+
+<script>
+    $(document).ready(function(){
+
+        $('.dynamic').change(function(){
+            if($(this).val() != ''){
+                var select = $(this).attr("id");
+                var value = $(this).val();
+                var dependent = $(this).data('dependent');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('bank_setup') }}",
+                    method:"POST",
+                    data:{select:select, value:value, _token:_token, dependent:dependent},
+                    success:function(result)
+                    {
+                        $('#'+dependent).html(result);
+                    }
+                })  
+            }
+        });
+    }
+</script>
+
+===== In controller
+$select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $request->get('select');
+        $data = DB::table('banks')->where($select, $value)->groupBy($dependent)->get();
+        $output = '<option value=""> Select '.ucfirst($dependent).'</option>';
+
+        foreach($data as $row){
+            $output .= '<option value="'.$row->$dependent.'">'.$row->dependent.'</option>';
+        }
+        echo $output;
+
+
+=======================OTHERS 
+
+
+@section('BankNames_JS')
+<!-- <script src="{{ asset('assets/js/bankDetails.js') }}" ></script> -->
+
+    <!-- <script type="text/javascript"> 
+        $(document).ready(function(){
+            setBankNames( @json($all_banks) );
+
+        });
+
+    </script> -->
+@endsection
+
+
+
+
+
+
+                                            @php
+                                                $initial_amount = 0;
+                                                $total = 0;
+                                                if($result->transaction_type == "Payable"){
+                                                    $total = $initial_amount - $result->amount;
+                                                    $initial_amount = $total;
+                                                    echo $initial_amount;
+                                                }
+                                                elseif($result->transaction_type == "Receivable"){
+                                                    $total = $initial_amount - $result->amount;
+                                                    $initial_amount = $total;
+                                                    echo $initial_amount;
+                                                }
+                                            @endphp 
+
+
+
+
+
+
+
+                                            @php
+                                                $num_of_items = count($filter_result);
+
+                                                $initial_amount = 0;
+                                                $total = 0;
+
+                                                for($x = 0; $x <= $num_of_items; $x++){
+                                                    if($result->transaction_type == "Payable"){
+                                                        $total = $initial_amount - $result->amount;
+                                                        $initial_amount = $total;
+                                                    }
+                                                    elseif($result->transaction_type == "Receivable"){
+                                                        $total = $initial_amount + $result->amount;
+                                                        $initial_amount = $total;
+                                                    }
+                                                    
+                                                }
+                                                echo $initial_amount;
+                                                
+                                            @endphp 
+
+
+
+
+
+
+                                            @php
+                                                $total = 0;
+                                                @endphp
+                                            @if($result->transaction_type == "Payable"){
+                                                @php
+                                                $result->amount = $total - $result->amount;
+                                                echo $result->amount;
+                                                @endphp
+                                            }
+                                            @elseif($result->transaction_type == "Receivable"){
+                                                @php
+                                                $result->amount = $total + $result->amount;
+                                                echo $result->amount;
+                                                @endphp
+                                            }
+                                            @endif
+
+
+
+
+                                            $num_of_items = count($filter_result);
+
+                                                
+
+                                                
+                                                    for($x = 0; $x < 1; $x++){
+                                                        $total = 0;
+                                                        if($result->transaction_type == "Payable"){
+                                                            
+                                                            $total = $total - $result->amount;
+                                                        }
+                                                        echo $total;
+                                                    
+                                                   
+                                                       if($result->transaction_type == "Receivable"){
+                                                            $total = $total + $result->amount;
+                                                        }
+                                                        echo $total;
+                                                   
+                                                }
+
+
+
+                                        @php
+                                        $initial_amount = 0;
+                                            foreach($result->amount as $amount){
+                                                $initial_amount += $amount;
+                                            }
+                                                  
+                                                
+                                            @endphp 
+
+
+                                            <td>
+                                                    @php 
+                                                        echo $result;
+                                                    @endphp 
+                                                    </td> 
+
+
+========================= Working Code ======================================================
+                                        @php
+                                            $result;
+                                            if($filter_result[0]->transaction_type == "Receivable"){
+                                                $result = 0 + $filter_result[0]->amount;
+                                                echo $result;
+                                            }else{
+                                                $result = 0 - $filter_result[0]->amount;
+                                                echo $result;
+                                            }
+                                            if($filter_result[1]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[1]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                $result = $result - $filter_result[1]->amount;
+                                                echo $result;
+                                            }
+                                            if($filter_result[2]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[2]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                $result = $result - $filter_result[2]->amount;
+                                                echo $result;
+                                            }
+                                            if($filter_result[3]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[3]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                $result = $result - $filter_result[3]->amount;
+                                                echo $result;
+                                            }
+                                            if($filter_result[4]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[4]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                $result = $result - $filter_result[4]->amount;
+                                                echo $result;
+                                            }
+                                            if($filter_result[5]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[5]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                $result = $result - $filter_result[5]->amount;
+                                                echo $result;
+                                            }
+                                            
+                                        @endphp 
+
+
+
+
+
+
+
+
+
+
+
+
+===================== The for loop type =======================================
+                                                @php
+                                                $num_of_items = count($filter_result);
+
+                                                $result = 0;
+
+                                                for($x = 0; $x < $num_of_items; $x++){
+                                                    if($filter_result[$x]->transaction_type == "Receivable"){
+                                                    $result = $result + $filter_result[$x]->amount;
+                                                    }else{
+                                                        $result = $result - $filter_result[$x]->amount;   
+                                                    }
+                                                    echo $result;      
+                                                }             
+                                            @endphp 
+
+                                            @php
+                                                $num_of_items = count($filter_result);
+
+                                                $result = 0;
+
+                                                for($x = 0; $x < $num_of_items; $x++){
+                                                    if($filter_result[$x]->transaction_type == "Receivable"){
+                                                    $result = $result + $filter_result[$x]->amount;
+                                                     
+                                                    }elseif($filter_result[$x]->transaction_type == "Payable"){
+                                                        $result = $result - $filter_result[$x]->amount;
+                                                           
+                                                    }
+                                                    else {
+                                                        $result = '';
+                                                    }
+                                                    echo $result;  
+                                                            
+                                                }
+
+                                            @endphp
+
+                                            Emmanuel Agudey is inviting you to a scheduled Zoom meeting.
+
+Topic: Emmanuel Agudey's Personal Meeting Room
+
+Join Zoom Meeting
+https://us04web.zoom.us/j/9770555096?pwd=SkJGYnZVSG9ud3JocS8zYTRkVjhYUT09
+
+Meeting ID: 977 055 5096
+Passcode: 9BUfdz 
+
+
+
+
+
+
+                                            $num_of_items = count($filter_result);
+
+                                                $result = 0;
+
+                                                for($x = 0; $x < $num_of_items; $x++){
+                                                    if($filter_result[$x]->transaction_type == "Receivable"){
+                                                    $result = $result + (int)($filter_result[$x]->amount); 
+                                                    }
+                                                    elseif($filter_result[$x]->transaction_type == "Payable"){
+                                                        $result = $result - (int)($filter_result[$x]->amount);     
+                                                    }
+                                                    else {
+                                                        $result = '';
+                                                    }          
+                                                }
+                                                echo $result;  
+
+
+
+
+
+================================Another code =====================================
+                                        @php
+                                            $result;
+                                            if($filter_result[0]->transaction_type == "Receivable"){
+                                                $result = 0 + $filter_result[0]->amount;
+                                                echo $result;
+                                            }elseif($filter_result[0]->transaction_type == "Payable")
+                                            {
+                                                $result = 0 - $filter_result[0]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            
+                                            if($filter_result[1]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[1]->amount;
+                                                echo $result;
+                                            }
+                                            elseif($filter_result[1]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[1]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            if($filter_result[2]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[2]->amount;
+                                                echo $result;
+                                            }
+                                            elseif($filter_result[2]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[2]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            if($filter_result[3]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[3]->amount;
+                                                echo $result;
+                                            }
+                                           elseif($filter_result[3]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[3]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            if($filter_result[4]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[4]->amount;
+                                                echo $result;
+                                            }
+                                            elseif($filter_result[4]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[4]->amount; 
+                                                echo $result; 
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            if($filter_result[5]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[5]->amount;
+                                                echo $result;
+                                            }
+                                            elseif($filter_result[5]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[5]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo "";
+                                            }
+                                            
+                                            
+                                        @endphp   
+
+
+
+
+
+
+
+
+
+
+
+
+                                        @php
+                                         $result;
+                                            if($filter_result[0]->transaction_type == "Receivable"){
+                                                $result = 0 + $filter_result[0]->amount;
+                                                echo $result;
+                                            }else{
+                                                echo '';
+                                            }
+                                            if($filter_result[0]->transaction_type == "Payable"){
+                                                $result = 0 - $filter_result[0]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo '';
+                                            }
+                                            if($filter_result[1]->transaction_type == "Receivable"){
+                                                $result = $result + $filter_result[1]->amount;
+                                                echo $result;
+                                            }else{
+                                                echo '';
+                                            }
+                                            if($filter_result[1]->transaction_type == "Payable"){
+                                                $result = $result - $filter_result[1]->amount;
+                                                echo $result;
+                                            }
+                                            else{
+                                                echo '';
+                                            }
+                                            
+                                        @endphp        
+                                                
