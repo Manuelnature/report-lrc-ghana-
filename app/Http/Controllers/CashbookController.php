@@ -26,7 +26,7 @@ class CashbookController extends Controller
             $filter_result = Cashbook::filter_response($date_from, $date_to);
             $filter_previous_receivable = Cashbook::filter_previous_receivable($date_from);
             $filter_previous_payable = Cashbook::filter_previous_payable($date_from);
-            
+             // dd($filter_result);
             $count_result = count($filter_result);
             
             if($count_result != 0){

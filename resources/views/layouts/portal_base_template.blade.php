@@ -104,7 +104,10 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <!-- <li class="menu-title font-size-15">Menu</li> -->
-
+                        @php
+                          if ($user_session_details[0]->user_group != NULL || $user_session_details[0]->user_group != '')
+                        {
+                        @endphp
                             <li>
                                 <a href="#" class="waves-effect font-size-15">
                                     <i class="ri-stack-line"></i><span class="badge rounded-pill bg-success float-end"></span>
@@ -137,28 +140,49 @@
                                     <li><a href="{{ url('pages.receivable') }}"><i class="ri-anticlockwise-line"></i>Receivables</a></li>
                                 </ul>
                             </li>
+                            @php
+                                if ($user_session_details[0]->user_group == 'Reviewer' || $user_session_details[0]->user_group == 'Approver'){
+                                 @endphp   
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
+                                                <i class="ri-paint-brush-line"></i><span class="badge rounded-pill bg-success float-end"></span>
+                                                <span>Reviews</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <li><a href="{{ url('pages.review_payable') }}"><i class="ri-clockwise-2-line"></i>Payables</a></li>
+                                                <li><a href="{{ url('pages.review_receivable') }}"><i class="ri-anticlockwise-line"></i>Receivables</a></li>
+                                            </ul>
+                                        </li>
+                                @php
+                                   
+                                }
+                                else {
+                                    echo '';
+                                }
+                            @endphp
 
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
-                                    <i class="ri-paint-brush-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Reviews</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ url('pages.review_payable') }}"><i class="ri-clockwise-2-line"></i>Payables</a></li>
-                                    <li><a href="{{ url('pages.review_receivable') }}"><i class="ri-anticlockwise-line"></i>Receivables</a></li>
-                                </ul>
-                            </li>
+                            @php
+                                if ($user_session_details[0]->user_group == 'Approver'){
+                                   @endphp
+                                        <li>
+                                            <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
+                                                <i class="mdi mdi-arrange-bring-forward"></i><span class="badge rounded-pill bg-success float-end"></span>
+                                                <span>Approvals</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <li><a href="{{ url('pages.approve_payable') }}"><i class="ri-clockwise-2-line"></i>Payables</a></li>
+                                                <li><a href="{{ url('pages.approve_receivable') }}"><i class="ri-anticlockwise-line"></i>Receivables</a></li>
+                                            </ul>
+                                        </li>
+                                    @php
+                                }
+                                else {
+                                    echo '';
+                                }
+                            @endphp
+                            
 
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
-                                    <i class="mdi mdi-arrange-bring-forward"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Approvals</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ url('pages.approve_payable') }}"><i class="ri-clockwise-2-line"></i>Payables</a></li>
-                                    <li><a href="{{ url('pages.approve_receivable') }}"><i class="ri-anticlockwise-line"></i>Receivables</a></li>
-                                </ul>
-                            </li>
+                            
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
@@ -173,46 +197,35 @@
                                     <li><a href="#"><i class="ri-swap-line"></i>Income Statement</a></li>
                                 </ul>
                             </li>
+                            @php
+                                if ($user_session_details[0]->user_group == 'Approver'){
+                                @endphp
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
+                                            <i class="ri-user-3-line"></i><span class="badge rounded-pill bg-success float-end"></span>
+                                            <span>Administrator</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            <li><a href="{{ url('pages.user_setup') }}"> <i class="ri-user-add-line"></i> User Setup</a>
+                                            </li>
+                                            <li><a href="{{ url('pages.user_group') }}"> <i class="ri-group-line"></i>Change User Group</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            @php        
+                            }
+                            else {
+                                echo '';
+                            }
+                            @endphp
 
-                            <!-- <li>
-                                <a href="#" class="waves-effect font-size-15">
-                                    <i class="ri-wallet-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Balance</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="waves-effect font-size-15">
-                                    <i class="ri-red-packet-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Expenditure Statement</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="waves-effect font-size-15">
-                                    <i class="ri-swap-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Income Statement</span>
-                                </a>
-                            </li> -->
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect font-size-15">
-                                    <i class="ri-user-3-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>Administrator</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages.user_setup"> <i class="ri-user-add-line"></i> User Setup</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- <li>
-                                <a href="pages.user_setup" class="waves-effect font-size-15">
-                                    <i class="ri-user-3-line"></i><span class="badge rounded-pill bg-success float-end"></span>
-                                    <span>User Setup</span>
-                                </a>
-                            </li> -->
-
-
+                        @php
+                        }
+                            else {
+                                echo '';
+                            }
+                        @endphp
+                        
                         </ul>
                     </div>
                     <!-- Sidebar -->

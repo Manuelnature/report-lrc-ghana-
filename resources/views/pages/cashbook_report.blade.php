@@ -50,10 +50,10 @@
                                         <td>{{$result->payable_type}}</td>
                                         <td>
                                             @php
-                                                if($result->purpose != NULL || $result->reviewed_by != ""){
+                                                if($result->purpose != NULL || $result->purpose != ""){
                                                     echo $result->purpose;
                                                 }
-                                                else {
+                                                else{
                                                     echo $result->comment;
                                                 }
                                            

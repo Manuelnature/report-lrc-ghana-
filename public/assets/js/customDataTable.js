@@ -26,6 +26,19 @@ $(document).ready(function(){
       });
     });
 
+$(document).ready(function(){
+    $('#bank_account_dataTable').dataTable({
+      "searching":true,
+     // "scrollX": false,
+     "paging":   true,
+     "ordering": true,
+     "info":     true,        
+     "responsive": true,
+     // "order": [[ 11, "desc" ]]
+
+      });
+    });
+
 
 $(document).ready(function(){
     $('#all_order_dataTable').dataTable({
@@ -55,33 +68,6 @@ $(document).ready(function(){
     });
 
 $(document).ready(function(){
-    $('#cancelled_order_dataTable').dataTable({
-      "searching":true,
-     // "scrollX": 800,
-     "paging":   true,
-     "ordering": true,
-     "info":     true,        
-     "responsive": true,
-     // "order": [[ 11, "desc" ]]
-
-      });
-    });
-
-
-$(document).ready(function(){
-    $('#transaction_dataTable').dataTable({
-      "searching":false,
-     // "scrollX": 800,
-     "paging":   false,
-     "ordering": true,
-     "info":     false,        
-     "responsive": true,
-     // "order": [[ 11, "desc" ]]
-
-      });
-    });
-
-$(document).ready(function(){
     $('#cashbook_report_dataTable').dataTable({
       "searching":false,
      "scrollX": false,
@@ -94,5 +80,8 @@ $(document).ready(function(){
 
       });
     });
+
+
+
 
    

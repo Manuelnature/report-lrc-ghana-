@@ -26,4 +26,17 @@ class BankAccountSetup extends Model
       return DB::table('banks')->insert($data);
     }
 
+    public static function load_branch_names(String $bank_name){
+            return DB::table('banks')
+            ->select('banks.*')
+            ->where('bank_name', '=', $bank_name)
+            ->get();
+    }
+
+    public static function delete_bank_account_setup(String $id){
+            return  DB::table('banks')
+            ->where('id', '=', $id)
+            ->delete();
+        }
+
 }

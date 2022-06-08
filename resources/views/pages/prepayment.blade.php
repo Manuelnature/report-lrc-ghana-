@@ -95,6 +95,7 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Payable Type</th>
+                                        <th>Project</th>
                                         <th>Amount</th>
                                         <th>Prepaid Receipt No</th>
                                         <th>Prepaid Amount</th>
@@ -111,6 +112,7 @@
                                     <tr>
                                         <td><a href="javascript: void(0);" class="text-dark fw-bold">{{ $prepaid_records->date }}</a> </td>
                                         <td>{{ $prepaid_records->payable_type }}</td>
+                                        <td>{{ $prepaid_records->project }}</td>
                                         <td>¢ {{ $prepaid_records->amount }}</td>
                                         <td>
                                             @php

@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SetPasswordController;
 use App\Http\Controllers\UserSetupController;
+use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\PayableSetupController;
 use App\Http\Controllers\ReceivableSetupController;
 use App\Http\Controllers\ProjectSetupController;
@@ -54,6 +55,10 @@ Route::group(['middleware' => 'disable_back_button'], function () {
         Route::get('pages.user_setup', [UserSetupController::class, 'index']);
         Route::post('pages.user_setup', [UserSetupController::class, 'store']);
 
+        // USER GROUPS ========================
+        Route::get('pages.user_group', [UserGroupController::class, 'index']);
+        Route::post('pages.user_group', [UserGroupController::class, 'assign_group'])->name('assign_new_group');
+
         // PAYABLE SETUPS ========================
         Route::get('pages.payable_setup', [PayableSetupController::class, 'index']);
         Route::post('pages.payable_setup', [PayableSetupController::class, 'add_payable']);
@@ -82,6 +87,9 @@ Route::group(['middleware' => 'disable_back_button'], function () {
 
         // BANK ACCOUNT SETUPS ======================
           Route::post('set_bank', [BankAccountSetupController::class, 'add_bank_details'])->name('addBank');
+          Route::get('pages.bank_account_setup_edit/{id}', [BankAccountSetupController::class, 'edit_bank_account_setup'])->name('bank_account_setup_edit');
+          Route::post('update_bank_account_setup/{id}', [BankAccountSetupController::class, 'update_bank_account_setup'])->name('bank_account_setup_update');
+          Route::post('delete_bank_account_setup/{id}', [BankAccountSetupController::class, 'delete_bank_account_setup'])->name('bank_account_setup_delete');
 
         // PAYABLES ======================
         Route::get('pages.payable', [PayableController::class, 'index']);

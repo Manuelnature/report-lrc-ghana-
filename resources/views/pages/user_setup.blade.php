@@ -44,21 +44,30 @@
                                 
                                     <div class="row mb-4">
                                         <div class="form-group col-md-1"></div>
-                                        <div class="form-group col-md-5 mb-4">
+                                        <div class="form-group col-md-4 mb-4">
                                           <label for="txt_email">Email Address</label>
                                           <input type="text" class="form-control" id="txt_email" name="txt_email" value="{{ old('txt_email') }}">
                                           <span class="text-danger">@error('txt_email') {{ $message }} @enderror</span>
                                         </div>
-                                        <div class="form-group col-md-5">
+                                        <div class="form-group col-md-4 mb-4">
                                           <label for="txt_department">Department</label>
                                           <input type="text" class="form-control" id="txt_department" name="txt_department" value="{{ old('txt_department') }}">
-                                          <span class="text-danger">@error('txt_department') {{ $message }} @enderror</span>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                          <label for="txt_user_group">Assign Group</label>
+                                          <select class="form-select" aria-label="Default select example" name="txt_user_group" id="txt_user_group">
+                                            <option disabled="disabled" selected="">Select Group</option>
+                                            <option value="Preparer">Preparer</option>
+                                            <option value="Reviewer">Reviewer</option>
+                                            <option value="Approver">Approver</option>
+                                          </select>
+                                          <span class="text-danger">@error('txt_user_group') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-1"></div>
                                     </div>
                                         
                                     <div class="text-center">
-                                        <button type="submit" name="add_menu" class="btn btn-add-user">Add User</button>
+                                        <button type="submit" name="add_user" class="btn btn-add-user">Add User</button>
                                     </div>
                                 </form>
                             </div>

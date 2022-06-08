@@ -39,7 +39,7 @@
                                     
                                     
                                     <div class="text-center">
-                                        <button type="submit" name="btn_save_payable" class="btn btn_save_payable">Send</button>
+                                        <button type="submit" name="btn_save_payable" class="btn btn_save_payable">Proceed</button>
 
                                        <!--  <button type="reset" name="btn_clear_payable" class="btn btn_clear_payable">Clear</button> -->
                                     </div>
@@ -62,7 +62,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="user_dataTable" class="table table-centered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="bank_account_dataTable" class="table table-centered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead class="thead-light">
                                     <tr>
                                         <th style="width: 20px;">
@@ -77,6 +77,7 @@
                                         <th>Branch Name</th>
                                         <th>Address</th>
                                          <th>Date Entered</th>
+                                         <th style="width: 120px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,6 +96,15 @@
                                         <td> {{ $all_bank_details->branch_name }}</td>
                                         <td> {{ $all_bank_details->address }} </td>
                                         <td> {{ $all_bank_details->date_entered }}</td>
+
+                                        <td class="receivable_action_td">
+                                            <a href="{{ route('bank_account_setup_edit', $all_bank_details->id) }}" class="me-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                            <form method="POST" action="{{ route('bank_account_setup_delete', $all_bank_details->id)}}">
+                                                @csrf
+                                                <button type="submit" class="text-danger delete_button show_confirm" data-toggle="tooltip"
+                                                data-placement="top" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></button>  
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -111,14 +121,6 @@
 </div>
 
 
-
-
-@endsection
-
-
-@section('Menu_JS')
-  <script src="{{ asset('assets/js/menuJS.js') }}" ></script>
-@endsection
 @section('DataTable_JS')
   <script src="{{ asset('assets/js/customDataTable.js') }}" ></script>
 @endsection
@@ -126,8 +128,10 @@
 @section('DeleteAlert_JS')
   <script src="{{ asset('assets/js/deleteAlert.js') }}" ></script>
 @endsection
-<!-- @section('BankNames_JS')
-<script src="{{ asset('assets/js/bankDetails.js') }}" ></script>
-@endsection -->
+
+@endsection
+
+
+
 
 

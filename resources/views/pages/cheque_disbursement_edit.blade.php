@@ -84,9 +84,9 @@
                                         <div class="col-md-1"></div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" name="btn_save_payable" class="btn btn_save_payable">Submit</button>
+                                        <button type="submit" name="btn_save_payable" class="btn btn_save_payable">Update</button>
 
-                                        <button type="reset" name="btn_clear_payable" class="btn btn_clear_payable">Clear</button>
+                                        <!-- <button type="reset" name="btn_clear_payable" class="btn btn_clear_payable">Clear</button> -->
                                     </div>
                                 </form>
                             </div>

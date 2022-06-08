@@ -20,4 +20,30 @@ class BankAccountSetupController extends Controller
         return redirect('pages.bank_setup');
         
     }
+
+    public function edit_bank_account_setup($id){
+        $bank_account_to_edit = BankAccountSetup::find($id);
+        // $get_bank_branches = BankAccountSetup::load_branch_names($bank_name);
+        // dd($bank_account_to_edit[0]->bank_name);
+        return view('pages.bank_account_setup_edit', compact('bank_account_to_edit'));
+    }
+
+    public function update_bank_account_setup(Request $request, $id){
+        $update_bank_account_setup = BankAccountSetup::find($id);
+        $update_bank_account_setup->branch_name = $request->get('txt_edit_branch_name');
+        $update_bank_account_setup->address = $request->get('txt_edit_bank_address');
+        $update_bank_account_setup->account_name = $request->get('txt_edit_account_name');
+        $update_bank_account_setup->account_number = $request->get('txt_edit_account_number');
+        $update_bank_account_setup->save();
+        Alert::toast('Records Successfully Updated','success');
+        return redirect('pages.bank_setup');
+    }
+
+    public function delete_bank_account_setup($id){
+    
+        BankAccountSetup::delete_bank_account_setup($id);
+        
+        Alert::toast('Record Deleted','warning');
+        return redirect('pages.bank_setup');
+     }
 }

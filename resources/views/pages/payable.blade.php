@@ -178,10 +178,6 @@
     </div>                  
 </div>
 
-
-
-@endsection
-
 @section('Menu_JS')
   <script src="{{ asset('assets/js/menuJS.js') }}" ></script>
 @endsection
@@ -192,5 +188,9 @@
 @section('DeleteAlert_JS')
   <script src="{{ asset('assets/js/deleteAlert.js') }}" ></script>
 @endsection
+
+@endsection
+
+
 
 

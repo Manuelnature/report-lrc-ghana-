@@ -58,8 +58,9 @@
                     </div>
                 </div>      
             </div>
-
         </div>
+        
+
 
         <div class="row">
             <div class="col-xl-12">
@@ -123,12 +124,6 @@
 </div>
 
 
-
-@endsection
-
-@section('Menu_JS')
-  <script src="{{ asset('assets/js/menuJS.js') }}" ></script>
-@endsection
 @section('DataTable_JS')
   <script src="{{ asset('assets/js/customDataTable.js') }}" ></script>
 @endsection
@@ -136,5 +131,9 @@
 @section('DeleteAlert_JS')
   <script src="{{ asset('assets/js/deleteAlert.js') }}" ></script>
 @endsection
+
+@endsection
+
+
 
 

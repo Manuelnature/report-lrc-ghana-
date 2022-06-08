@@ -50,15 +50,20 @@ class LoginController extends Controller
         else {
             $set_password_email_details = Login::user_set_password($email)->toArray();
 
-            // dd($set_password_email[0]->password);
-            if($set_password_email_details[0]->password == ""){
+            if ($set_password_email_details){
+
+                if($set_password_email_details[0]->password == "" || $set_password_email_details[0]->password == NULL){
                 Alert::toast('New user! Set up Password','success');
                 return view('auth.set_password', compact('set_password_email_details'));
+                }
+                else{
+                    Alert::toast('Enter Password to Login','warning');
+                   return redirect('/'); 
+                }
             }
             else{
-                Alert::toast('Enter Password to Login','warning');
-
-               return redirect('/'); 
+                Alert::toast('Email not found! Enter Again','warning');
+                return redirect('/');
             }
             
         }
