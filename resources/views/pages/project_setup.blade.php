@@ -27,11 +27,13 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group mb-4 col-md-5">
                                           <label for="txt_project_code">Code</label>
-                                          <input type="text" class="form-control" id="txt_project_code" name="txt_project_code" value="">
+                                          <input type="text" class="form-control" id="txt_project_code" name="txt_project_code" value="{{old('txt_project_code')}}">
+                                          <span class="text-danger">@error('txt_project_code') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_project_name">Name</label>
-                                          <input type="text" class="form-control" id="txt_project_name" name="txt_project_name" value="">
+                                          <input type="text" class="form-control" id="txt_project_name" name="txt_project_name" value="{{old('txt_project_name')}}">
+                                          <span class="text-danger">@error('txt_project_name') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -39,7 +41,8 @@
                                         <div class="form-group col-md-1"></div>
                                         <div class="form-group col-md-10">
                                           <label for="txt_project_description">Description</label>
-                                          <textarea class="form-control" name="txt_project_description" id="txt_project_description"></textarea>
+                                          <textarea class="form-control" name="txt_project_description" id="txt_project_description">{{old('txt_project_description')}}</textarea>
+                                          <span class="text-danger">@error('txt_project_description') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-1"></div>
                                     </div>

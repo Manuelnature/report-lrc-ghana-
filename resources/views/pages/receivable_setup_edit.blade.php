@@ -23,8 +23,8 @@
                                 <form enctype="multipart/form-data" method="POST" action="{{ route('receivable_setup_update', $receivable_to_edit->id) }}">
                                     @csrf
                                     <div class="row mb-4">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group mb-4 col-md-5">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group mb-4 col-md-3">
                                           <label for="txt_receivable_code">Code</label>
                                           <input type="text" class="form-control" id="txt_receivable_code" name="txt_receivable_code" value="{{ $receivable_to_edit->code }}" readonly>
                                         </div>
@@ -32,7 +32,10 @@
                                           <label for="txt_edit_receivable_name">Receivable Name</label>
                                           <input type="text" class="form-control" id="txt_edit_receivable_name" name="txt_edit_receivable_name" value="{{ $receivable_to_edit->name }}">
                                         </div>
-                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-md-4">
+                                          <label for="txt_edit_report_category">Report Category</label>
+                                          <input type="text" class="form-control" id="txt_edit_report_category" name="txt_edit_report_category" value="{{ $receivable_to_edit->report_category }}">
+                                        </div>
                                     </div>
                                     
                                     <div class="row">

@@ -1,0 +1,3 @@
+Changes to LRC 
+portal base template
+Income statement blade, controller and model

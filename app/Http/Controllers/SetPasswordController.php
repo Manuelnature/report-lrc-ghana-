@@ -30,7 +30,7 @@ public function index(){
         else{
 
             $set_password_email_details = SetPassword::keep_user($id);
-            Alert::toast('Passwords do not match, Reset!','warning');
+            Alert::toast('Passwords do not match, Please reset!','warning');
             return view('auth.set_password', compact('set_password_email_details'));
             // redirect()->back()->getTargetUrl();
         }

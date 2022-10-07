@@ -7,7 +7,7 @@
         
         <!-- start page title -->
         <div class="row">
-            <center><h4>Payable Setup</h4></center>
+            <center> <h4>Payable Setup</h4></center>
         </div>
         <!-- end page title -->
 
@@ -24,22 +24,30 @@
                                 <form enctype="multipart/form-data" method="POST" action="pages.payable_setup">
                                     @csrf
                                     <div class="row mb-4">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group mb-4 col-md-5">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group mb-4 col-md-3">
                                           <label for="txt_payable_code">Code</label>
                                           <input type="text" class="form-control" id="txt_payable_code" name="txt_payable_code" value="">
+                                          <span class="text-danger">@error('txt_payable_code') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_payable_name">Payable Name</label>
                                           <input type="text" class="form-control" id="txt_payable_name" name="txt_payable_name" value="">
+                                          <span class="text-danger">@error('txt_payable_name') {{ $message }} @enderror</span>
                                         </div>
-                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-md-4">
+                                          <label for="txt_report_category">Report Category</label>
+                                          <input type="text" class="form-control" id="txt_report_category" name="txt_report_category" value="{{ old('txt_report_category') }}">
+                                          <span class="text-danger">@error('txt_report_category') {{ $message }} @enderror</span>
+                                        </div>
+                                        <!-- <div class="col-md-4"></div> -->
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-1"></div>
                                         <div class="form-group col-md-10">
                                           <label for="txt_payable_description">Description</label>
                                           <textarea class="form-control" name="txt_payable_description" id="txt_payable_description"></textarea>
+                                          <span class="text-danger">@error('txt_payable_description') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-1"></div>
                                     </div>
@@ -62,41 +70,28 @@
         <!-- end row -->
 
         <div class="row">
-            <div class="col-xl-1"></div>
 
-            <div class="col-xl-10">
+            <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="user_dataTable" class="table table-centered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="user_dataTable" class="table table-centered dt-responsive " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th style="width: 20px;">
-                                            <div class="form-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="ordercheck">
-                                                <label class="form-check-label mb-0" for="ordercheck">&nbsp;</label>
-                                            </div>
-                                        </th>
                                         <th>Code</th>
                                         <th>Payable Name</th>
-                                        <th>Description</th>
-                                        
+                                        <th>Description</th> 
+                                        <th>Report Category</th>                            
                                         <th style="width: 120px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($all_payable_setups as $all_payables)
-                                    <tr>
-                                        <td>
-                                            <div class="form-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="ordercheck1">
-                                                <label class="form-check-label mb-0" for="ordercheck1">&nbsp;</label>
-                                            </div>
-                                        </td>
-                                        
+                                    <tr> 
                                         <td><a href="javascript: void(0);" class="text-dark fw-bold">{{ $all_payables->code }}</a> </td>
                                         <td> {{ $all_payables->name }}</td>
                                         <td> {{ $all_payables->description }} </td>
+                                        <td> {{ $all_payables->report_category }} </td>
                                         <td class="payable_action_td">
                                             <a href="{{ route('payable_setup_edit',$all_payables->id) }}" class="me-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
                                             <form method="POST" action="{{ route('payable_setup_delete',$all_payables->id) }}">
@@ -118,7 +113,6 @@
                 </div>      
             </div>
 
-            <div class="col-xl-1"></div>
         </div>
 
     </div>                  

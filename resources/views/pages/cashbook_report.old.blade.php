@@ -4,7 +4,7 @@
 
     <div class="page-content">
     <div class="container-fluid">
-
+        
         <!-- start page title -->
         <div class="row">
             <center><h4>Cash Book Report</h4></center>
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="cashbook_report_dataTable" class="table table-centered dt-responsive " style="border-collapse: collapse; border-spacing: 0;">
+                            <table id="cashbook_report_dataTable" class="table table-centered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0;">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Date</th>
@@ -40,16 +40,11 @@
                                         <td><strong>Opening Balance </strong></td>
                                         <td></td>
                                         <td></td>
-                                        {{-- <td>{{ $balance_accumulator }}</td> --}}
-                                        <td>
-                                            @php
-                                                echo number_format($balance_accumulator, 2);
-                                            @endphp
-                                        </td>
+                                        <td>{{ $balance_accumulator }}</td>
                                     </tr>
                                     @foreach($filter_result as $result)
                                     <tr>
-
+                                        
                                         <td><a href="javascript: void(0);" class="text-dark fw-bold"></a>{{$result->date}} </td>
                                         <td>{{$result->cheque_number}}</td>
                                         <td>{{$result->payable_type}}</td>
@@ -61,59 +56,59 @@
                                                 else{
                                                     echo $result->comment;
                                                 }
-
+                                           
                                             @endphp
                                         </td>
                                         <td>
                                             @php
                                                 if($result->transaction_type == "Payable"){
-                                                    echo number_format($result->amount,2);
+                                                    echo $result->amount;
                                                 }
                                                 else {
                                                     echo '-';
                                                 }
-
-                                            @endphp
+                                           
+                                            @endphp  
                                         </td>
                                         <td>
                                             @php
                                                 if($result->transaction_type == "Receivable"){
-                                                    echo number_format($result->amount,2);
+                                                    echo $result->amount;
                                                 }
                                                 else {
                                                     echo '-';
                                                 }
-                                            @endphp
+                                            @endphp  
                                         </td>
 
                                         <td>
                                          @php
                                             if($result->transaction_type == "Receivable"){
-                                                $balance_accumulator = (double)$balance_accumulator + (double)($result->amount);
+                                                $balance_accumulator = (double)$balance_accumulator + (double)($result->amount); 
                                             }
-                                            elseif($result->transaction_type == "Payable"){
-                                                $balance_accumulator = ((double)$balance_accumulator) - ((double)($result->amount));
-                                            }
+                                            else if($result->transaction_type == "Payable"){
+                                                $balance_accumulator = ((double)$balance_accumulator) - ((double)($result->amount));     
+                                            } 
                                             else{
                                                 $balance_accumulator = (double)$balance_accumulator;
-                                            }
-                                            echo number_format($balance_accumulator,2);
+                                            }        
+                                            echo $balance_accumulator;  
 
                                         @endphp
 
-                                        </td>
+                                        </td> 
                                     </tr>
-                                    @endforeach
+                                    @endforeach 
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>      
             </div>
 
         </div>
 
-    </div>
+    </div>                  
 </div>
 @endsection
 

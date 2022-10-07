@@ -10,6 +10,18 @@ class BankAccountSetupController extends Controller
 {
     function add_bank_details(Request $request){
         // dd($request->all());
+        $request->validate([
+            'txt_branch_name' => 'required',
+            'txt_bank_address' => 'required',
+            'txt_account_name' => 'required',
+            'txt_account_number' => 'required|numeric',
+            ], [
+            'txt_branch_name.required' => 'Branch name is required',
+            'txt_bank_address.required' => 'Bank address is required',
+            'txt_account_name.required' => 'Account name is required',
+            'txt_account_number.required' => 'Account number is required',
+            'txt_account_number.numeric' => 'Account number must not include text'
+        ]);
         $bank_name = $request->get('txt_bank_name');
         $bank_branch = $request->get('txt_branch_name');
         $bank_address = $request->get('txt_bank_address');
@@ -18,7 +30,7 @@ class BankAccountSetupController extends Controller
         BankAccountSetup::add_bank_account($bank_name, $bank_branch, $bank_address, $account_name, $account_number);
         Alert::toast('Bank Account Added','success');
         return redirect('pages.bank_setup');
-        
+
     }
 
     public function edit_bank_account_setup($id){

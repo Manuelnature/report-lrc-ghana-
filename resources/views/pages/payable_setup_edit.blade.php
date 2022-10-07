@@ -24,8 +24,8 @@
                                     @method('PATCH')
                                     @csrf
                                     <div class="row mb-4">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group mb-4 col-md-5">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group mb-4 col-md-3">
                                           <label for="txt_payable_code">Code</label>
                                           <input type="text" class="form-control" id="txt_payable_code" name="txt_payable_code" value="{{ $payable_to_edit->code }}" readonly>
                                         </div>
@@ -33,7 +33,11 @@
                                           <label for="txt_edit_payable_name">Payable Name</label>
                                           <input type="text" class="form-control" id="txt_edit_payable_name" name="txt_edit_payable_name" value="{{ $payable_to_edit->name }}">
                                         </div>
-                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-md-4">
+                                          <label for="txt_edit_report_category">Report Category</label>
+                                          <input type="text" class="form-control" id="txt_edit_report_category" name="txt_edit_report_category" value="{{ $payable_to_edit->report_category }}">
+                                        </div>
+                                        <!-- <div class="col-md-1"></div> -->
                                     </div>
 
                                     <div class="row">

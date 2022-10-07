@@ -191,10 +191,11 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ url('pages.cashbook') }}"><i class="ri-book-2-line"></i>Cash Book</a></li>
+                                    <li><a href="{{ url('pages.trial_balance') }}"><i class="ri-wallet-line"></i>Trial Balance</a></li>
+                                    <li><a href="{{ url('pages.income_statement') }}"><i class="ri-swap-line"></i>Income Statement</a></li>
+                                    <li><a href="{{ url('pages.expenditure_statement') }}"><i class="ri-red-packet-line"></i>Expenditure Statement</a></li>
                                     <li><a href="#"><i class="ri-book-open-line"></i>Accounts Ledger</a></li>
-                                    <li><a href="#"><i class="ri-wallet-line"></i>Trial Balance</a></li>
-                                    <li><a href="#"><i class="ri-red-packet-line"></i>Expenditure Statement</a></li>
-                                    <li><a href="#"><i class="ri-swap-line"></i>Income Statement</a></li>
+                                    
                                 </ul>
                             </li>
                             @php

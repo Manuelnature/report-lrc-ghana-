@@ -33,6 +33,7 @@
                                                 <option value="{{ $bank_details->bank_id }}">{{ $bank_details->bank_name }}</option>  
                                                 @endforeach
                                            </select>
+                                           <span class="text-danger">@error('txt_bank_name') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>

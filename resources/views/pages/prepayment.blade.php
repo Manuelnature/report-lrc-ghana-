@@ -27,7 +27,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_prepaid_date">Date</label>
-                                          <input type="date" class="form-control" id="txt_prepaid_date" name="txt_prepaid_date" value="">
+                                          <input type="date" class="form-control" id="txt_prepaid_date" name="txt_prepaid_date" value="{{ old('txt_prepaid_date') }}">
+                                          <span class="text-danger">@error('txt_prepaid_date') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_prepaid_payable_type">Payable Type</label>
@@ -37,6 +38,7 @@
                                                     <option value="{{ $payable_names->name }}">{{ $payable_names->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">@error('txt_prepaid_payable_type') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -44,7 +46,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_prepaid_amount">Amount</label>
-                                          <input type="text" class="form-control" id="txt_prepaid_amount" name="txt_prepaid_amount" value="">
+                                          <input type="text" class="form-control" id="txt_prepaid_amount" name="txt_prepaid_amount" value="{{ old('txt_prepaid_amount') }}">
+                                          <span class="text-danger">@error('txt_prepaid_amount') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_prepaid_payable_project">Project</label>
@@ -54,6 +57,7 @@
                                                     <option value="{{ $projects->name }}">{{ $projects->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">@error('txt_prepaid_payable_project') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -61,7 +65,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-10">
                                           <label for="txt_prepaid_comment">Comment</label>
-                                          <textarea class="form-control" name="txt_prepaid_comment" id="txt_prepaid_comment" placeholder="Add comment here"></textarea>
+                                          <textarea class="form-control" name="txt_prepaid_comment" id="txt_prepaid_comment" placeholder="Add comment here">{{ old('txt_prepaid_comment') }}</textarea>
+                                          <span class="text-danger">@error('txt_prepaid_comment') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>

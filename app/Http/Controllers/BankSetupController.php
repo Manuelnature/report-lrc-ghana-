@@ -16,6 +16,11 @@ class BankSetupController extends Controller
     }
 
     function get_bank_name(Request $request){
+        $request->validate([
+            'txt_bank_name' => 'required'
+            ], [
+            'txt_bank_name.required' => 'Bank name is required'
+        ]);
         $bank_id = $request->get('txt_bank_name');
         $bank_details = BankSetup::select_branches($bank_id);
         $bank_name = $bank_details[0]->bank_name;

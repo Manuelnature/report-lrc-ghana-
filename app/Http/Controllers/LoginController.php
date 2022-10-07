@@ -20,7 +20,6 @@ class LoginController extends Controller
         $password = $request->txt_password;
 
         if(!empty($password)){
-
             $login_data = Login::user_login($email, $password)->toArray();
 
             // dd($login_data);

@@ -35,11 +35,13 @@
                                                 <option value="{{ $bank->branch_name }}">{{ $bank->branch_name }}</option>  
                                                 @endforeach   
                                            </select>
+                                           <span class="text-danger">@error('txt_branch_name') {{ $message }} @enderror</span>
                                         </div>
                                         
                                         <div class="form-group col-md-5">
                                           <label for="txt_bank_address">Address</label>
                                           <textarea class="form-control" name="txt_bank_address" id="txt_bank_address"></textarea>
+                                          <span class="text-danger">@error('txt_bank_address') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -49,10 +51,12 @@
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_account_name">Account Name</label>
                                           <input type="text" class="form-control" id="txt_account_name" name="txt_account_name" value="">
+                                          <span class="text-danger">@error('txt_account_name') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_account_number">Account Number</label>
                                           <input type="text" class="form-control" id="txt_account_number" name="txt_account_number" value="">
+                                          <span class="text-danger">@error('txt_account_number') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-1"></div>
                                     </div>

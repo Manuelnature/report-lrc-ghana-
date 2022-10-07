@@ -17,7 +17,28 @@ class ChequeDisbursementController extends Controller
     }
 
     public function add_cheque(Request $request){
-        // dd($request->all());
+        $request->validate([
+        'txt_payment_account' => 'required',
+        'txt_cheque_bank' => 'required',
+        'txt_cheque_reference_number' => 'required',
+        'txt_cheque_number' => 'required',
+        'txt_cheque_purpose' => 'required',
+        'txt_cheque_amount' => 'required|numeric',
+        'txt_cheque_date' => 'required',
+        'txt_cheque_payable_type' => 'required',
+        'txt_cheque_prepared_by' => 'required'
+        ], [
+        'txt_payment_account.required' => 'Payable Account is required',
+        'txt_cheque_bank.required' => 'Cheque bank is required',
+        'txt_cheque_reference_number.required' => 'Cheque reference number is required',
+        'txt_cheque_number.required' => 'Cheque number is required',
+        'txt_cheque_purpose.required' => 'Purpose is required',
+        'txt_cheque_amount.required' => 'Amount is required',
+        'txt_cheque_amount.numeric' => 'Enter amount in numbers without comma(,)',
+        'txt_cheque_date.required' => 'Cheque date is required',
+        'txt_cheque_payable_type.required' => 'Payable type is required',
+        'txt_cheque_prepared_by.required' => 'Prepared by is required',
+    ]);
         $user_session = Session::get('user_session');
         $active_user = $user_session[0]->first_name.' '.$user_session[0]->last_name;
         // dd($active_user);
@@ -28,6 +49,8 @@ class ChequeDisbursementController extends Controller
         $cheque_number = $request->get('txt_cheque_number');
         $purpose = $request->get('txt_cheque_purpose');
         $cheque_amount = $request->get('txt_cheque_amount');
+        // $cheque_amount = floatval(preg_replace('/[^\d.]/', '', $cheque_amount)); //Removes comma from the amount entered
+        // dd($cheque_amount);
         $cheque_date = $request->get('txt_cheque_date');
         $cheque_payable_type = $request->get('txt_cheque_payable_type');
         $prepared_by = $request->get('txt_cheque_prepared_by');
@@ -55,6 +78,28 @@ class ChequeDisbursementController extends Controller
     }
 
     public function update_cheque(Request $request, $id){
+        $request->validate([
+        // 'txt_payment_account' => 'required',
+        'txt_edit_cheque_bank' => 'required',
+        'txt_edit_cheque_reference_number' => 'required',
+        'txt_edit_cheque_number' => 'required',
+        'txt_edit_cheque_purpose' => 'required',
+        'txt_edit_cheque_amount' => 'required|numeric',
+        'txt_edit_cheque_date' => 'required',
+        'txt_edit_cheque_payable_type' => 'required',
+        'txt_edit_cheque_prepared_by' => 'required'
+        ], [
+        // 'txt_payment_account.required' => 'Payable Account is required',
+        'txt_edit_cheque_bank.required' => 'Cheque bank is required',
+        'txt_edit_cheque_reference_number.required' => 'Cheque reference number is required',
+        'txt_edit_cheque_number.required' => 'Cheque number is required',
+        'txt_edit_cheque_purpose.required' => 'Purpose is required',
+        'txt_edit_cheque_amount.required' => 'Amount is required',
+        'txt_edit_cheque_amount.numeric' => 'Enter amount in numbers without comma(,)',
+        'txt_edit_cheque_date.required' => 'Cheque date is required',
+        'txt_edit_cheque_payable_type.required' => 'Payable type is required',
+        'txt_edit_cheque_prepared_by.required' => 'Prepared by is required',
+    ]);
         $update_cheque = ChequeDisbursement::find($id);
         $update_cheque->bank = $request->get('txt_edit_cheque_bank');
         $update_cheque->reference_number = $request->get('txt_edit_cheque_reference_number');

@@ -14,6 +14,16 @@ class ProjectSetupController extends Controller
     }
 
     public function add_project(Request $request){
+
+        $request->validate([
+            'txt_project_code' => 'required',
+            'txt_project_name' => 'required',
+            'txt_project_description' => 'required',
+            ], [
+            'txt_project_code.required' => 'Project Code is required',
+            'txt_project_name.required' => 'Project Name is required',
+            'txt_project_description.required' => 'Project description is required'
+        ]);
         // dd($request->all());
         $code = $request->get('txt_project_code');
         $name = $request->get('txt_project_name');

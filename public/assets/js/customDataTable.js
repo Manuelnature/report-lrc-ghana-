@@ -81,6 +81,20 @@ $(document).ready(function(){
       });
     });
 
+    $(document).ready(function(){
+      $('#trial_balance_report_dataTable').dataTable({
+        "searching":false,
+       "scrollX": false,
+       "scrollY": false,
+       "paging":   true,
+       "ordering": true,
+       "info":     true,        
+       "responsive": true,
+       // "order": [[ 7, "balance" ]]
+  
+        });
+      });
+
 
 
 

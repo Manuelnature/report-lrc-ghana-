@@ -38,10 +38,12 @@
                                                     </option>
                                                 @endforeach
                                           </select>
+                                          <span class="text-danger">@error('txt_payment_account') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                             <label for="txt_cheque_bank">To</label>
-                                            <input class="form-control" type="text" placeholder="" name="txt_cheque_bank" id="txt_cheque_bank">
+                                            <input class="form-control" type="text" placeholder="" name="txt_cheque_bank" id="txt_cheque_bank" value="{{ old('txt_cheque_bank') }}">
+                                            <span class="text-danger">@error('txt_cheque_bank') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -57,11 +59,13 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_cheque_reference_number">Reference Number</label>
-                                          <input type="text" class="form-control" id="txt_cheque_reference_number" name="txt_cheque_reference_number" value="">
+                                          <input type="text" class="form-control" id="txt_cheque_reference_number" name="txt_cheque_reference_number" value="{{ old('txt_cheque_reference_number') }}">
+                                          <span class="text-danger">@error('txt_cheque_reference_number') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_cheque_number">Cheque Number</label>
-                                          <input type="text" class="form-control" id="txt_cheque_number" name="txt_cheque_number" value="">
+                                          <input type="text" class="form-control" id="txt_cheque_number" name="txt_cheque_number" value="{{ old('txt_cheque_number') }}">
+                                          <span class="text-danger">@error('txt_cheque_number') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -69,7 +73,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-10">
                                           <label for="txt_cheque_purpose">Purpose</label>
-                                          <textarea class="form-control" name="txt_cheque_purpose" id="txt_cheque_purpose" placeholder="Enter Purpose here"></textarea>
+                                          <textarea class="form-control" name="txt_cheque_purpose" id="txt_cheque_purpose" placeholder="Enter Purpose here">{{ old('txt_cheque_purpose') }}</textarea>
+                                          <span class="text-danger">@error('txt_cheque_purpose') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -77,11 +82,13 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_cheque_amount">Amount</label>
-                                          <input type="text" class="form-control" id="txt_cheque_amount" name="txt_cheque_amount" value="">
+                                          <input type="text" class="form-control" id="txt_cheque_amount" name="txt_cheque_amount" value="{{ old('txt_cheque_amount') }}">
+                                          <span class="text-danger">@error('txt_cheque_amount') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_cheque_date">Cheque Date</label>
-                                          <input type="date" class="form-control" id="txt_cheque_date" name="txt_cheque_date" value="">
+                                          <input type="date" class="form-control" id="txt_cheque_date" name="txt_cheque_date" value="{{ old('txt_cheque_date') }}">
+                                          <span class="text-danger">@error('txt_cheque_date') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -95,10 +102,12 @@
                                                     <option value="{{ $payable_names->name }}">{{ $payable_names->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">@error('txt_cheque_payable_type') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-6">
                                           <label for="txt_cheque_prepared_by">Prepared By</label>
-                                          <input type="text" class="form-control" id="txt_cheque_prepared_by" name="txt_cheque_prepared_by" value="">
+                                          <input type="text" class="form-control" id="txt_cheque_prepared_by" name="txt_cheque_prepared_by" value="{{ old('txt_cheque_prepared_by') }}">
+                                          <span class="text-danger">@error('txt_cheque_prepared_by') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>

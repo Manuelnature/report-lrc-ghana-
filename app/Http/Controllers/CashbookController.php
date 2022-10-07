@@ -33,12 +33,12 @@ class CashbookController extends Controller
 
                 $total_payable_amount = 0;
                 foreach($filter_previous_payable as $payable){
-                    $total_payable_amount = $total_payable_amount + $payable->amount ;
+                    $total_payable_amount = (double)$total_payable_amount + (double)$payable->amount ;
                 }
 
                 $total_receivable_amount = 0;
                 foreach($filter_previous_receivable as $receivable){
-                    $total_receivable_amount = $total_receivable_amount + $receivable->amount ;
+                    $total_receivable_amount = (double)$total_receivable_amount + (double)$receivable->amount ;
                 }
               
                 $opening_balance = $total_receivable_amount - $total_payable_amount;

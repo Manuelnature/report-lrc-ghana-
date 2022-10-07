@@ -59,6 +59,7 @@
                                         <div class="form-group col-md-10">
                                           <label for="txt_edit_prepaid_comment">Comment</label>
                                           <textarea readonly class="form-control" name="txt_edit_prepaid_comment" id="txt_edit_prepaid_comment">{{ $prepaid_to_edit->comment }}</textarea>
+                                          <span class="text-danger">@error('txt_edit_prepaid_comment') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -66,11 +67,13 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-3">
                                           <label for="txt_prepaid_receipt_number">Receipt Number</label>
-                                          <input type="text" class="form-control" id="txt_prepaid_receipt_number" name="txt_prepaid_receipt_number" value="">
+                                          <input type="text" class="form-control" id="txt_prepaid_receipt_number" name="txt_prepaid_receipt_number" value="{{ old('txt_prepaid_receipt_number') }}">
+                                          <span class="text-danger">@error('txt_prepaid_receipt_number') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_prepaid_receipt_amount">Receipt Amount</label>
-                                          <input type="text" class="form-control" id="txt_prepaid_receipt_amount" name="txt_prepaid_receipt_amount" value="">
+                                          <input type="text" class="form-control" id="txt_prepaid_receipt_amount" name="txt_prepaid_receipt_amount" value="{{ old('txt_prepaid_receipt_amount') }}">
+                                          <span class="text-danger">@error('txt_prepaid_receipt_amount') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>

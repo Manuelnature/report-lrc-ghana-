@@ -27,7 +27,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_receivable_date">Date</label>
-                                          <input type="date" class="form-control" id="txt_receivable_date" name="txt_receivable_date" value="">
+                                          <input type="date" class="form-control" id="txt_receivable_date" name="txt_receivable_date" value="{{ old('txt_receivable_date') }}">
+                                          <span class="text-danger">@error('txt_receivable_date') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_receivable_type">Receivable Type</label>
@@ -37,6 +38,7 @@
                                                     <option value="{{ $receivable_names->name }}">{{ $receivable_names->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">@error('txt_receivable_type') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -44,7 +46,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-5 mb-4">
                                           <label for="txt_receivable_amount">Amount</label>
-                                          <input type="text" class="form-control" id="txt_receivable_amount" name="txt_receivable_amount" value="">
+                                          <input type="text" class="form-control" id="txt_receivable_amount" name="txt_receivable_amount" value="{{ old('txt_receivable_amount') }}">
+                                          <span class="text-danger">@error('txt_receivable_amount') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="form-group col-md-5">
                                           <label for="txt_receivable_project">Project</label>
@@ -54,6 +57,7 @@
                                                     <option value="{{ $projects->name }}">{{ $projects->name }}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">@error('txt_receivable_project') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -61,7 +65,8 @@
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-10">
                                           <label for="txt_receivable_comment">Comment</label>
-                                          <textarea class="form-control" name="txt_receivable_comment" id="txt_receivable_comment" placeholder="Add comment here"></textarea>
+                                          <textarea class="form-control" name="txt_receivable_comment" id="txt_receivable_comment" placeholder="Add comment here">{{ old('txt_receivable_comment') }}</textarea>
+                                          <span class="text-danger">@error('txt_receivable_comment') {{ $message }} @enderror</span>
                                         </div>
                                         <div class="col-md-1"></div>
                                     </div>
@@ -102,6 +107,7 @@
                                         <th>Date</th>
                                         <th>Receivable Type</th>
                                         <th>Amount</th>
+                                        <th>Project</th>
                                         <th>Comment</th>
                                         <th>Status</th>
                                         <th>Entered By</th>
@@ -124,6 +130,7 @@
                                         <td><a href="javascript: void(0);" class="text-dark fw-bold">{{ $receivable_records->date }}</a> </td>
                                         <td>{{ $receivable_records->payable_type }}</td>
                                         <td>¢ {{ $receivable_records->amount }}</td>
+                                        <td>{{ $receivable_records->project }}</td>
                                         <td>{{ $receivable_records->comment }}</td>
                                         <td>{{ $receivable_records->status }}</td>
                                         <td>{{ $receivable_records->entered_by }}</td>

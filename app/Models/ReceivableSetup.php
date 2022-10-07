@@ -15,12 +15,13 @@ class ReceivableSetup extends Model
         'code',
         'name',
         'description',
-        'type' 
+        'type',
+        'report_category' 
     ];
 
-    public static function add_receivable(String $code, String $name, String $description, String $type)
+    public static function add_receivable(String $code, String $name, String $description, String $type, String $report_category)
     {
-        $data = array('code' => $code, 'name'=> $name, 'description'=> $description, 'type'=> $type);
+        $data = array('code' => $code, 'name'=> $name, 'description'=> $description, 'type'=> $type, 'report_category'=> $report_category);
 
       return DB::table('tbl_payable_setups')->insert($data);
       

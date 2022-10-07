@@ -19,8 +19,11 @@ use App\Http\Controllers\ApprovePayableController;
 use App\Http\Controllers\ReviewReceivableController;
 use App\Http\Controllers\ApproveReceivableController;
 use App\Http\Controllers\BankAccountSetupController;
-use App\Http\Controllers\CashbookController;
 use App\Http\Controllers\PrepaymentController;
+use App\Http\Controllers\CashbookController;
+use App\Http\Controllers\TrialBalanceController;
+use App\Http\Controllers\IncomeStatementController;
+use App\Http\Controllers\ExpenditureStatementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +146,15 @@ Route::group(['middleware' => 'disable_back_button'], function () {
         Route::get('pages.cashbook', [CashbookController::class, 'index']);
         // Route::get('pages.cashbook_report', [CashbookController::class, 'view_report']);
         Route::post('pages.cashbook', [CashbookController::class, 'get_dates'])->name('getDates');
+
+        // TRIAL BALANCE REPORT ======================
+        Route::get('pages.trial_balance', [TrialBalanceController::class, 'index']);
+
+        // INCOME STATEMENT REPORT ======================
+        Route::get('pages.income_statement', [IncomeStatementController::class, 'index']);
+
+        // EXPENDITURE STATEMENT REPORT ======================
+        Route::get('pages.expenditure_statement', [ExpenditureStatementController::class, 'index']);
 
         // DASHBOARD ======================
         Route::get('pages.dashboard', [DashboardController::class, 'index']);
